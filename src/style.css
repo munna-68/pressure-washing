@@ -61,7 +61,7 @@ ul, ol { list-style: none; }
 .loader__mark { position: relative; font-size: clamp(44px, 7.4vw, 124px); line-height: 1; letter-spacing: -0.01em; font-weight: 500; transform-origin: 0 0; will-change: transform; }
 .loader__mark svg, .hero-logo svg { position: absolute; left: -4%; right: -4%; top: 50%; width: 108%; height: 34%; transform: translateY(-50%); overflow: visible; }
 .loader__mark path, .hero-logo path { fill: none; stroke: var(--blue); stroke-width: 2px; vector-effect: non-scaling-stroke; stroke-linecap: round; }
-.loader__tag { position: absolute; left: 50%; top: calc(50% + clamp(36px, 5vw, 78px)); transform: translateX(-50%); color: var(--mute); }
+.loader__tag { white-space: nowrap; position: absolute; left: 50%; top: calc(50% + clamp(36px, 5vw, 78px)); transform: translateX(-50%); color: var(--mute); }
 .loader__count { position: absolute; right: var(--pad); bottom: 28px; font-size: 12px; }
 
 /* ---------- fixed header ---------- */
