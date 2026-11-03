@@ -225,7 +225,7 @@ function placeDrop() {
   const pt = track.getPointAtLength(len * prog.p);
   drop.setAttribute("cx", pt.x);
   drop.setAttribute("cy", pt.y);
-  gsap.set(ink, { drawSVG: `0% ${prog.p * 100}%` });
+  ink.style.strokeDashoffset = len * (1 - prog.p) + (prog.p <= 0 ? 1 : 0);
   if (prog.p - lastSpark > 0.008 && prog.p < 0.995) {
     lastSpark = prog.p;
     for (let k = 0; k < 2; k++) {
@@ -238,7 +238,7 @@ function placeDrop() {
     }
   } else if (prog.p < lastSpark) lastSpark = prog.p;
 }
-gsap.set(ink, { drawSVG: "0% 0%" });
+ink.style.strokeDasharray = `${len} ${len}`;
 placeDrop();
 gsap.to(prog, { p: 1, ease: "none", onUpdate: placeDrop, scrollTrigger: { trigger: ".process__stage", start: "top 62%", end: "bottom 72%", scrub: 0.6 } });
 $$("[data-step]").forEach((s) => ScrollTrigger.create({ trigger: s, start: "top 74%", onEnter: () => s.classList.add("is-on"), onLeaveBack: () => s.classList.remove("is-on") }));

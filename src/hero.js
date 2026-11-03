@@ -24,6 +24,13 @@ export function initHero({ lenis, reduce, desktop }) {
 
   const u = (n) => n * (stage.offsetWidth / (desktop ? 2562 : 390));
   const jet = $(desktop ? '[data-jet="d"]' : '[data-jet="m"]');
+  /* hose: plain stroke-dash so the head travels exactly along the path */
+  const hose = $$("path", jet);
+  hose.forEach((p) => {
+    const L = p.getTotalLength();
+    p.style.strokeDasharray = `${L} ${L}`;
+    p.style.strokeDashoffset = L + 1;
+  });
   const hn = $$(desktop ? "[data-hn]" : "[data-hn-m]");
   const rules = $$("[data-rule]");
 
@@ -67,7 +74,7 @@ export function initHero({ lenis, reduce, desktop }) {
     .to(gun, { x: u(-20), y: u(8), duration: 0.07, ease: "power2.out" }, 2.1)
     .to(gun, { x: 0, y: 0, duration: 0.45, ease: "power3.out" }, 2.17)
     .set(jet, { visibility: "inherit" }, 2.1)
-    .fromTo($$("path", jet), { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: 1.6, ease: "power2.inOut" }, 2.1);
+    .to(hose, { strokeDashoffset: 0, duration: 2.8, ease: "power1.inOut" }, 2.1);
 
   if (desktop) tl.set($(".jet--spray"), { visibility: "inherit" }, 2.1).add(() => spray.play(), 2.12);
 
@@ -103,16 +110,16 @@ export function initHero({ lenis, reduce, desktop }) {
 
   /* loader: count, hose swipes through the wordmark, wordmark flies into the nav */
   const count = $("[data-loader-count]");
-  const wave = $("[data-loader-wave]");
-  const logoWave = $("[data-wave]");
+  const wave = $(".loader__mark svg");
+  const logoWave = $("svg", logo);
   const n = { v: 0 };
-  gsap.set(wave, { drawSVG: "0% 0%" });
+  gsap.set(wave, { clipPath: "inset(0 100% 0 0)" });
 
   const run = () => {
     const load = gsap.timeline();
     load
       .to(n, { v: 100, duration: 2.1, ease: "power2.inOut", onUpdate: () => (count.textContent = String(Math.round(n.v)).padStart(2, "0")) })
-      .to(wave, { drawSVG: "0% 100%", duration: 1, ease: "power2.inOut" }, 1.15)
+      .to(wave, { clipPath: "inset(0 0% 0 0)", duration: 1.1, ease: "power2.inOut" }, 1.1)
       .add(() => {
         const a = mark.getBoundingClientRect();
         const b = logo.getBoundingClientRect();
@@ -126,7 +133,7 @@ export function initHero({ lenis, reduce, desktop }) {
           ease: "expo.inOut",
           onComplete: () => {
             gsap.set(logo, { autoAlpha: 1 });
-            gsap.set(logoWave, { drawSVG: "0% 100%" });
+            gsap.set(logoWave, { clipPath: "none" });
             loader.remove();
           },
         });
