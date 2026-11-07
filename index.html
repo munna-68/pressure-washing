@@ -6,305 +6,385 @@
     <title>Tidemark | Exterior cleaning, done by hand</title>
     <meta name="description" content="Tidemark restores driveways, patios, render and roofs with the right pressure for every surface." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <script>document.documentElement.classList.add("js")</script>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1677956787377-a0f32c0974af?auto=format&fit=crop&w=2000&q=80" />
+    <script>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add("js");
+        try {
+          if (matchMedia("(prefers-reduced-motion: reduce)").matches) d.classList.add("reduced", "preloaded");
+          else if (sessionStorage.getItem("tm-pre")) d.classList.add("preloaded");
+        } catch (e) { d.classList.add("preloaded"); }
+      })();
+    </script>
   </head>
   <body>
+    <!-- icon sprite -->
     <svg width="0" height="0" style="position:absolute" aria-hidden="true">
       <defs>
-        <filter id="drop-blur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="1.5" /></filter>
-        <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#eef0f0" /><stop offset=".45" stop-color="#9aa0a3" /><stop offset=".6" stop-color="#6f7679" /><stop offset="1" stop-color="#c9cdcf" />
-        </linearGradient>
-        <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#4a5053" /><stop offset=".25" stop-color="#2a2f31" /><stop offset="1" stop-color="#16191a" />
-        </linearGradient>
+        <symbol id="i-ur" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></symbol>
+        <symbol id="i-r" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></symbol>
+        <symbol id="i-l" viewBox="0 0 24 24"><path d="M20 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></symbol>
+        <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3c3.5 4.6 6.5 8.2 6.5 12a6.5 6.5 0 0 1-13 0C5.5 11.2 8.5 7.6 12 3z" fill="currentColor" /></symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5.5c0 4.3 3 8 7 9.5 4-1.5 7-5.2 7-9.5V6l-7-3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" /><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8" /><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></symbol>
+        <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 16.8 6.6 19.7l1.1-6.1-4.5-4.2 6.1-.8z" fill="currentColor" /></symbol>
+        <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14M5 19l7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6.5-6 6.5-11a6.5 6.5 0 0 0-13 0c0 5 6.5 11 6.5 11z" fill="none" stroke="currentColor" stroke-width="1.8" /><circle cx="12" cy="10" r="2.3" fill="currentColor" /></symbol>
+        <symbol id="i-patio" viewBox="0 0 24 24"><path d="M3 4h8v7H3zM13 4h8v7h-8zM3 13h8v7H3zM13 13h8v7h-8z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" /></symbol>
+        <symbol id="i-drive" viewBox="0 0 24 24"><path d="M9 3 5 21M15 3l4 18M12 5v2.5M12 10.5v3M12 16.5v3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" /></symbol>
+        <symbol id="i-house" viewBox="0 0 24 24"><path d="M4 11 12 4l8 7v9H4z M10 20v-5h4v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" /></symbol>
+        <symbol id="i-live" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.4" fill="currentColor" /><path d="M7.8 7.8a6 6 0 0 0 0 8.4M16.2 7.8a6 6 0 0 1 0 8.4M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></symbol>
       </defs>
     </svg>
 
-    <!-- LOADER -->
-    <div class="loader" data-loader aria-hidden="true">
-      <div class="loader__mark" data-loader-mark>
-        <span class="serif">TIDEMARK</span>
-        <svg viewBox="0 0 400 40" preserveAspectRatio="none"><path data-loader-wave d="M0 22 C 40 4, 80 4, 120 22 S 200 40, 240 22 S 320 4, 400 20" /></svg>
-      </div>
-      <p class="loader__tag mono">Exterior surface restoration</p>
-      <span class="loader__count mono" data-loader-count>00</span>
+    <!-- PRELOADER: the word fills with the hero photo, then dives into it -->
+    <div class="pre" data-pre aria-hidden="true">
+      <svg class="pre__svg" data-pre-svg>
+        <defs>
+          <linearGradient id="pre-fill" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0" stop-color="#000" data-pre-stop />
+            <stop offset="0" stop-color="#fff" data-pre-stop />
+          </linearGradient>
+          <mask id="pre-mask" maskUnits="userSpaceOnUse">
+            <g data-pre-zoom>
+              <rect class="pre__rect" x="-50%" y="-50%" width="200%" height="200%" fill="#fff" />
+              <text class="pre__word" data-pre-word fill="url(#pre-fill)" text-anchor="middle">Tidemark</text>
+            </g>
+          </mask>
+        </defs>
+        <rect class="pre__cover" data-pre-cover width="100%" height="100%" mask="url(#pre-mask)" />
+        <text class="pre__outline" data-pre-outline text-anchor="middle">Tidemark</text>
+      </svg>
+      <span class="pre__tl">Tidemark exterior care</span>
+      <span class="pre__tr">Est. 2014</span>
+      <span class="pre__bl">Pressure set to the stone</span>
+      <span class="pre__count" data-pre-count>000</span>
     </div>
 
     <a class="skip" href="#main">Skip to content</a>
 
-    <!-- fixed header: appears after the hero -->
+    <!-- compact nav that returns on scroll up -->
     <header class="fnav" data-fnav>
-      <a class="fnav__logo serif" href="#top">TIDEMARK</a>
+      <a class="logo" href="#top">tidemark</a>
       <nav class="fnav__links" aria-label="Primary">
-        <a class="link-draw" href="#services">Services</a>
-        <a class="link-draw" href="#process">Process</a>
-        <a class="link-draw" href="#work">Our work</a>
-        <a class="link-draw" href="#faq">Questions</a>
-        <a class="btn" href="#contact">Book a survey</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#work">Results</a>
+        <a href="#faq">Questions</a>
       </nav>
-      <button class="menu-btn" data-menu-btn aria-expanded="false" aria-controls="menu"><i></i><i></i><span>Menu</span></button>
+      <a class="btn btn--orange btn--sm" href="#contact"><span class="roll"><span>Book a survey</span><span aria-hidden="true">Book a survey</span></span></a>
+      <button class="menu-btn" data-menu-btn aria-expanded="false" aria-controls="menu"><i></i><i></i><span class="sr-only">Menu</span></button>
     </header>
 
     <div class="menu" id="menu" data-menu>
       <a href="#services">Services</a>
       <a href="#process">Process</a>
-      <a href="#work">Our work</a>
+      <a href="#work">Results</a>
       <a href="#faq">Questions</a>
       <a href="#contact">Book a survey</a>
-      <p class="mono">hello@tidemark.example<br />Mon to Sat, 8am to 6pm</p>
+      <p>hello@tidemark.example<br />Mon to Sat, 8am to 6pm</p>
     </div>
 
     <main id="main">
       <!-- HERO -->
       <section class="hero" id="top" data-hero>
-        <div class="stage" data-stage>
-          <!-- nav inside the stage -->
-          <a class="dpos hero-logo serif" href="#top" data-hero-logo aria-label="Tidemark">
-            <span>TIDEMARK</span>
-            <svg viewBox="0 0 400 40" preserveAspectRatio="none"><path data-wave d="M0 22 C 40 4, 80 4, 120 22 S 200 40, 240 22 S 320 4, 400 20" /></svg>
-          </a>
-          <nav class="dpos hero-links" aria-label="Main">
-            <a class="link-draw" data-hn href="#services">Services</a>
-            <a class="link-draw" data-hn href="#process">Process</a>
-            <a class="link-draw" data-hn href="#work">Our work</a>
-            <a class="link-draw" data-hn href="#faq">Questions</a>
-          </nav>
-          <a class="dpos hero-cta btn btn--lg" data-hn href="#contact">Book a survey</a>
-          <button class="menu-btn menu-btn--hero" data-hn-m data-menu-btn aria-expanded="false" aria-controls="menu"><i></i><i></i><span>Menu</span></button>
-          <div class="dpos rule" data-rule="top"></div>
+        <div class="hero__media"><img data-hero-img src="https://images.unsplash.com/photo-1677956787377-a0f32c0974af?auto=format&fit=crop&w=2000&q=80" alt="A Tidemark cleaner in hi-vis jet washing wet paving" /></div>
+        <div class="hero__scrim" aria-hidden="true"></div>
 
-          <!-- polaroids -->
-          <div class="dpos pol pol--before" data-drift data-h="before">
-            <figure class="print" data-print>
-              <div class="print__img"><img src="/img/s4.jpg" alt="Render before cleaning, stained and streaked" class="dirty" /></div>
-              <figcaption class="mono"><b>Before</b><span>Job 0412</span></figcaption>
+        <div class="hero__top" data-hero-top>
+          <a class="logo logo--light" href="#top">tidemark</a>
+          <nav class="hero__links" aria-label="Main">
+            <a href="#services">Services</a>
+            <a href="#process">Process</a>
+            <a href="#work">Results <em class="badge">New</em></a>
+            <a href="#faq">Questions</a>
+          </nav>
+          <div class="hero__actions">
+            <a class="btn btn--light btn--sm" href="#contact"><span class="roll"><span>Book a survey</span><span aria-hidden="true">Book a survey</span></span></a>
+            <button class="menu-btn menu-btn--light" data-menu-btn aria-expanded="false" aria-controls="menu"><i></i><i></i><span class="sr-only">Menu</span></button>
+          </div>
+        </div>
+        <div class="hero__sub" data-hero-top>
+          <span>Exterior cleaning</span>
+          <a href="#contact">Get in touch</a>
+        </div>
+
+        <div class="hero__lede" data-hero-lede>
+          <p>Driveways, patios and render,<br />cleaned at the pressure they can take.</p>
+          <span class="chip chip--glass"><i class="dot"><svg><use href="#i-drop" /></svg></i>Free survey, written quote in 48 hours</span>
+        </div>
+
+        <h1 class="hero__word" data-hero-word>
+          <span class="sr-only">Tidemark exterior cleaning</span>
+          <span class="hero__chars" aria-hidden="true">Tidemark</span>
+        </h1>
+
+        <a class="stamp" href="#contact" data-stamp aria-label="Book a free survey">
+          <svg viewBox="0 0 200 200" data-stamp-ring>
+            <defs><path id="stamp-ring" d="M100 100m-74 0a74 74 0 1 1 148 0a74 74 0 1 1-148 0" /></defs>
+            <text><textPath href="#stamp-ring" textLength="462" lengthAdjust="spacing">Book a free survey * Book a free survey * </textPath></text>
+          </svg>
+          <span class="stamp__core"><svg><use href="#i-ur" /></svg></span>
+        </a>
+      </section>
+
+      <div class="wrap">
+        <!-- BENEFIT -->
+        <section class="benefit" aria-labelledby="benefit-h">
+          <div class="benefit__left">
+            <p class="eyebrow">Why Tidemark</p>
+            <h2 class="h2" id="benefit-h" data-heading>Restore your <i class="hpill" style="--img:url(/img/s5.jpg)"></i> stone without stripping it.</h2>
+            <div class="tags">
+              <span class="chip"><svg><use href="#i-shield" /></svg>Fully insured</span>
+              <span class="chip"><svg><use href="#i-leaf" /></svg>Plant-safe rinse</span>
+            </div>
+            <ul class="acc card" data-acc>
+              <li class="is-open">
+                <button aria-expanded="true">Low pressure, by default<i></i></button>
+                <div><p>We identify the stone, run a hidden test patch and only go as high as the surface allows.</p></div>
+              </li>
+              <li>
+                <button aria-expanded="false">Soft wash for render and roofs<i></i></button>
+                <div><p>K Rend, monocouche and tiles get a gentle biocide wash, never a jet straight at the finish.</p></div>
+              </li>
+              <li>
+                <button aria-expanded="false">A check-in after twelve months<i></i></button>
+                <div><p>We come back a year on to see how the clean is holding, and touch up anything that has turned green.</p></div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="benefit__card card">
+            <div class="benefit__copy">
+              <p class="est"><span class="ico"><svg><use href="#i-drop" /></svg></span>Est. 2014</p>
+              <p class="small">A small crew with a van that carries its own water. We set the pressure to the material, never to what the machine can give.</p>
+              <div class="benefit__foot">
+                <h3 class="h3">Pressure set<br />to the stone</h3>
+                <a class="btn btn--dark" href="#contact"><span class="roll"><span>Book a survey</span><span aria-hidden="true">Book a survey</span></span><span class="btn__ico"><svg><use href="#i-r" /></svg></span></a>
+              </div>
+            </div>
+            <figure class="window benefit__photo" data-window>
+              <img src="https://images.unsplash.com/photo-1779517226302-029fb0f68ba1?auto=format&fit=crop&w=900&q=80" alt="Jet washing a rendered stairwell wall" loading="lazy" />
+              <span class="chip chip--white chip--tr">Spring slots open</span>
+              <div class="mini">
+                <small>Surfaces restored</small>
+                <b data-count="1800">1,800+</b>
+                <a class="chip chip--orange" href="#contact"><svg><use href="#i-plus" /></svg>Book</a>
+              </div>
             </figure>
           </div>
-          <div class="dpos pol pol--after" data-drift data-h="after">
-            <figure class="print" data-print>
-              <div class="print__img">
-                <img src="/img/s4.jpg" alt="The same render after cleaning, bright and even" />
-                <div class="print__dirty" data-dirty><img src="/img/s4.jpg" alt="" class="dirty" /></div>
+        </section>
+
+        <!-- PROCESS -->
+        <section class="process card" id="process" aria-labelledby="process-h">
+          <div class="process__top">
+            <div class="tags">
+              <span class="chip chip--grey"><svg><use href="#i-pin" /></svg>Free survey</span>
+              <span class="chip chip--grey"><svg><use href="#i-clock" /></svg>Most jobs in a day</span>
+            </div>
+            <p class="eyebrow">The process</p>
+          </div>
+          <div class="process__head">
+            <h2 class="h2" id="process-h" data-heading>Four steps from <i class="hpill" style="--img:url(/img/s6.jpg)"></i> survey to final seal.</h2>
+            <p class="small">Your clean starts with a walk round the job and ends with a check-in a year later.</p>
+          </div>
+          <div class="process__row" data-steps>
+            <div class="counter">
+              <p><b data-step-num>01</b><span>/04</span></p>
+              <small data-step-tag>Free, about 30 minutes</small>
+              <div class="counter__nav">
+                <button class="round round--line" data-step-prev aria-label="Previous step"><svg><use href="#i-l" /></svg></button>
+                <button class="round round--orange" data-step-next aria-label="Next step"><svg><use href="#i-r" /></svg></button>
               </div>
-              <figcaption class="mono">
-                <span class="swap"><b data-label="after">After</b><b data-label="before" class="dark" aria-hidden="true">Before</b></span><span>Job 0412</span>
+            </div>
+            <article class="step-dark">
+              <div class="step-dark__text" data-step-text>
+                <h3>The survey</h3>
+                <p>We walk the job with you, identify the stone and check anything nearby that water could hurt.</p>
+              </div>
+              <div class="step-dark__foot">
+                <span class="live"><svg><use href="#i-live" /></svg>Booking this week</span>
+                <span class="chip chip--outline">tidemark.example</span>
+              </div>
+            </article>
+            <figure class="step-photo" data-step-photo>
+              <img src="/img/s6.jpg" alt="Sketching a site plan during a survey" data-step-img />
+              <span class="chip chip--white chip--tl" data-step-label>Step one</span>
+              <figcaption>
+                <span class="faces" aria-hidden="true"><i style="--img:url(/img/s1.jpg)"></i><i style="--img:url(/img/s7.jpg)"></i></span>
+                <b data-step-cap>Walk round<br />and quote</b>
               </figcaption>
             </figure>
           </div>
+        </section>
 
-          <h1 class="dpos hero-title serif" data-h="title"><span class="block">Tidemark</span><span class="block">Washing</span></h1>
-
-          <!-- hose: desktop -->
-          <svg class="jet jet--d" data-jet="d" viewBox="0 0 2562 1378" aria-hidden="true">
-            <g transform="translate(607 574)" fill="none" stroke-linecap="round">
-              <path class="eraser" d="M 0 98 C 380 36 1130 -70 1130 62 C 1130 200 600 178 668 304 C 736 430 1600 392 1640 480 C 1680 568 1250 590 1296 676 C 1342 762 1840 768 2060 790" />
-              <path class="water" d="M 0 98 C 380 36 1130 -70 1130 62 C 1130 200 600 178 668 304 C 736 430 1600 392 1640 480 C 1680 568 1250 590 1296 676 C 1342 762 1840 768 2060 790" />
-            </g>
-          </svg>
-          <!-- hose: mobile -->
-          <svg class="jet jet--m" data-jet="m" viewBox="0 0 390 480" aria-hidden="true">
-            <g fill="none" stroke-linecap="round">
-              <path class="eraser" d="M 125 312 C 175 286 250 272 330 278 C 386 282 380 314 300 316 C 224 318 150 324 160 346 C 170 366 282 356 336 360 C 384 362 384 392 332 402 C 280 412 262 436 330 446 C 368 452 400 450 432 452" />
-              <path class="water" d="M 125 312 C 175 286 250 272 330 278 C 386 282 380 314 300 316 C 224 318 150 324 160 346 C 170 366 282 356 336 360 C 384 362 384 392 332 402 C 280 412 262 436 330 446 C 368 452 400 450 432 452" />
-            </g>
-          </svg>
-          <svg class="jet jet--spray" viewBox="0 0 2562 1378" aria-hidden="true"><g data-drops></g></svg>
-
-          <!-- the gun (original vector drawing) -->
-          <div class="dpos gun" data-drift data-h="gun">
-            <div class="gun__rot">
-              <svg viewBox="0 0 640 360" aria-hidden="true">
-                <rect x="250" y="131" width="350" height="18" rx="9" fill="url(#steel)" />
-                <rect x="318" y="124" width="12" height="32" rx="4" fill="url(#steel)" />
-                <rect x="468" y="127" width="8" height="26" rx="3" fill="url(#steel)" />
-                <rect x="592" y="126" width="10" height="28" rx="3" fill="var(--blue)" />
-                <rect x="602" y="128" width="36" height="24" rx="6" fill="#23282a" />
-                <path d="M40 150 C 40 120 72 106 112 106 L 272 110 C 292 111 304 124 304 140 C 304 158 290 170 272 172 L 190 177 L 152 181 C 122 185 90 191 70 185 C 50 179 40 168 40 150 Z" fill="url(#body)" />
-                <path d="M104 181 L 192 176 L 176 318 C 174 336 154 346 134 341 L 98 331 C 84 327 80 314 82 302 Z" fill="url(#body)" />
-                <path d="M96 232 L 160 226 M94 252 L 166 246 M92 272 L 170 266 M90 292 L 172 286" stroke="#0f1213" stroke-width="5" stroke-linecap="round" opacity=".55" />
-                <path d="M206 178 C 214 238 252 246 266 214 L 266 174" fill="none" stroke="#1b1f21" stroke-width="10" stroke-linecap="round" />
-                <path d="M232 178 L 248 178 L 255 216 C 255 224 240 226 238 216 Z" fill="#3b4144" />
-                <rect x="88" y="338" width="54" height="20" rx="4" fill="url(#steel)" />
-                <path d="M62 128 C 120 118 220 120 288 126" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="4" stroke-linecap="round" />
-              </svg>
+        <!-- BEFORE / AFTER -->
+        <section class="work" id="work" aria-labelledby="work-h">
+          <div class="compare" data-compare>
+            <img class="compare__img" data-job-img src="/img/s5.jpg" alt="After cleaning" />
+            <div class="compare__before"><img class="compare__img dirty" data-job-img src="/img/s5.jpg" alt="Before cleaning" /></div>
+            <span class="chip chip--white compare__tag compare__tag--l">Before</span>
+            <span class="chip chip--white compare__tag compare__tag--r">After</span>
+            <div class="compare__handle" data-handle role="slider" aria-label="Before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0"><span><svg><use href="#i-l" /></svg><svg><use href="#i-r" /></svg></span></div>
+            <div class="job card" data-job-card>
+              <div class="job__head"><span><svg><use href="#i-drop" /></svg>Today's job</span><em class="chip chip--orange chip--xs" data-job-delta>-92% grime</em></div>
+              <p class="job__big"><b data-job-area>64</b><small>m² <span data-job-surface>porcelain terrace</span></small></p>
+              <svg class="job__chart" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true"><path data-job-line d="M0 58 C 30 56 50 30 80 34 S 120 60 150 46 S 200 12 230 22 S 270 40 300 14" /></svg>
+              <dl class="job__stats">
+                <div><dt>Time</dt><dd data-job-time>4h 20m</dd></div>
+                <div><dt>Water</dt><dd data-job-water>410 L</dd></div>
+                <div><dt>Finish</dt><dd data-job-finish>Sealed</dd></div>
+              </dl>
             </div>
           </div>
 
-          <div class="dpos badge" data-h="badge" aria-hidden="true">
-            <svg viewBox="0 0 200 200" class="badge__disc"><circle cx="100" cy="100" r="100" /><path d="M 72 100 C 81 90 91 90 100 100 C 109 110 119 110 128 100" fill="none" stroke-width="5" stroke-linecap="round" /></svg>
-            <svg viewBox="0 0 200 200" class="badge__ring" data-badge-ring>
-              <defs><path id="ring" d="M 100 26.5 A 73.5 73.5 0 1 1 100 173.5 A 73.5 73.5 0 1 1 100 26.5" /></defs>
-              <text><textPath href="#ring" textLength="459" lengthAdjust="spacing">Tidemark · Exterior care · Est. 2014 · </textPath></text>
-            </svg>
+          <div class="work__side">
+            <p class="eyebrow">Before and after</p>
+            <h2 class="h2" id="work-h" data-heading>Same stone, <i class="hpill" style="--img:url(/img/s4.jpg)"></i> four hours apart.</h2>
+            <div class="jobs" role="tablist" aria-label="Choose a job">
+              <button class="round round--white is-on" role="tab" aria-selected="true" data-job="0" aria-label="Patio"><svg><use href="#i-patio" /></svg></button>
+              <button class="round round--white" role="tab" aria-selected="false" data-job="1" aria-label="Driveway"><svg><use href="#i-drive" /></svg></button>
+              <button class="round round--white" role="tab" aria-selected="false" data-job="2" aria-label="Render"><svg><use href="#i-house" /></svg></button>
+              <span class="jobs__label" data-job-name>Patio</span>
+            </div>
+            <div class="work__foot">
+              <div>
+                <p class="small">Drag the line. Every job is shot on the day, from the same spot, before we pack the van.</p>
+                <a class="round round--orange round--xl" href="#contact" aria-label="Book a survey"><svg><use href="#i-ur" /></svg></a>
+              </div>
+              <figure class="mini-photo">
+                <img src="/img/s7.jpg" alt="Cleaning a sash window" loading="lazy" />
+                <span class="chip chip--white">Windows rinsed too</span>
+              </figure>
+            </div>
           </div>
+        </section>
 
-          <div class="dpos rule" data-rule="bottom"></div>
-          <div class="dpos hero-actions" data-h="cta">
-            <a class="btn btn--lg" href="#contact">Get a free quote</a>
-            <a class="text-link" href="#work">See before and afters</a>
+        <!-- SERVICES (dark) -->
+        <section class="services" id="services" aria-labelledby="services-h">
+          <div class="services__head">
+            <p class="eyebrow eyebrow--light">Services</p>
+            <h2 class="h2" id="services-h" data-heading>Five surfaces and one rule: the <i class="hpill" style="--img:url(https://images.unsplash.com/photo-1605146768851-eda79da39897?auto=format&fit=crop&w=300&q=70)"></i> pressure the material can take.</h2>
           </div>
-          <figure class="dpos hero-review" data-h="review">
-            <span class="avatar" aria-hidden="true"></span>
-            <div><blockquote class="serif">“Our patio looks newer than the day it was laid.”</blockquote><figcaption class="mono">Sarah K. · Sandstone patio, restored</figcaption></div>
-          </figure>
-        </div>
-      </section>
-
-      <!-- ABOUT -->
-      <section class="about" data-about>
-        <div class="about__top">
-          <span class="chip">About</span>
-          <span class="about__brand serif">TIDEMARK</span>
-          <a class="about__link" href="#process">Our method ↗</a>
-        </div>
-        <p class="about__text" data-reveal-words>
-          We bring tired <i class="pill pill--img" style="--img:url(/img/s2.jpg)"></i> driveways, patios and render back to how they were first laid. Over <b class="pill pill--num" data-count="1800">1,800+</b> surfaces restored so far, from mossy <i class="pill pill--img" style="--img:url(/img/s3.jpg)"></i> town courtyards to long country drives, every one tested first by a small crew <i class="pill pill--img" style="--img:url(/img/s1.jpg)"></i> who set the pressure to the stone, and never the other way round.
-        </p>
-        <div class="about__mono" aria-hidden="true"><i></i><span class="serif">TM</span><i></i></div>
-      </section>
-
-      <!-- SERVICES -->
-      <section class="services" id="services">
-        <header class="services__head">
-          <h2 class="display" data-split-lines>What we<br />bring back</h2>
-          <p data-fade>Five surfaces, one rule. We test a patch first, then clean at the pressure the material can take, not the pressure the machine can give.</p>
-        </header>
-        <ol class="svc-list">
-          <li class="svc" style="--i:0; --bg:#d8d1c3; --fg:#1f2425">
-            <div class="svc__bar"><small class="mono">(01)</small><h3>Driveways</h3></div>
-            <div class="svc__panel">
-              <div class="svc__body">
-                <p>Block paving, tarmac and resin brought back to one even colour. Weeds out of the joints, oil and tyre marks lifted, sand brushed back in.</p>
-                <ul class="mono"><li>Rotary surface clean</li><li>Oil and tyre marks treated</li><li>Joints re-sanded</li></ul>
-                <em class="mono">Block paving · Tarmac · Resin</em>
-              </div>
-              <div class="svc__img"><img src="/img/s3.jpg" alt="" loading="lazy" /></div>
-            </div>
-          </li>
-          <li class="svc" style="--i:1; --bg:#f4f1ea; --fg:#1f2425">
-            <div class="svc__bar"><small class="mono">(02)</small><h3>Patios and stone</h3></div>
-            <div class="svc__panel">
-              <div class="svc__body">
-                <p>Sandstone, limestone and porcelain cleaned at the pressure the stone can take, then sealed if it needs protecting from the next winter.</p>
-                <ul class="mono"><li>Test patch first</li><li>Black spot lichen treated</li><li>Optional breathable seal</li></ul>
-                <em class="mono">Sandstone · Limestone · Porcelain</em>
-              </div>
-              <div class="svc__img"><img src="/img/s5.jpg" alt="" loading="lazy" /></div>
-            </div>
-          </li>
-          <li class="svc" style="--i:2; --bg:#1f2425; --fg:#e9e4dc">
-            <div class="svc__bar"><small class="mono">(03)</small><h3>Render and walls</h3></div>
-            <div class="svc__panel">
-              <div class="svc__body">
-                <p>Soft wash for K Rend, monocouche and painted walls. Algae and green streaks lifted without blasting the finish off the house.</p>
-                <ul class="mono"><li>Soft wash, no blasting</li><li>Biocide against regrowth</li><li>Windows and sills rinsed</li></ul>
-                <em class="mono">K Rend · Monocouche · Brick</em>
-              </div>
-              <div class="svc__img"><img src="/img/s4.jpg" alt="" loading="lazy" /></div>
-            </div>
-          </li>
-          <li class="svc" style="--i:3; --bg:var(--blue); --fg:#f4f1ea">
-            <div class="svc__bar"><small class="mono">(04)</small><h3>Roofs and gutters</h3></div>
-            <div class="svc__panel">
-              <div class="svc__body">
-                <p>Moss removed by hand and soft wash, never a jet straight at the tiles. Gutters cleared and downpipes checked while we are up there.</p>
-                <ul class="mono"><li>Hand scrape and soft wash</li><li>Gutters and downpipes cleared</li><li>Photos from the roof</li></ul>
-                <em class="mono">Tile · Slate · Moss removal</em>
-              </div>
-              <div class="svc__img"><img src="/img/s2.jpg" alt="" loading="lazy" /></div>
-            </div>
-          </li>
-          <li class="svc" style="--i:4; --bg:#e3ddcf; --fg:#1f2425">
-            <div class="svc__bar"><small class="mono">(05)</small><h3>Decking and fences</h3></div>
-            <div class="svc__panel">
-              <div class="svc__body">
-                <p>Hardwood and composite cleaned back to the grain, then oiled or stained so it does not turn green again by spring.</p>
-                <ul class="mono"><li>Grain-safe pressure</li><li>Anti-slip treatment</li><li>Oil or stain finish</li></ul>
-                <em class="mono">Hardwood · Composite · Softwood</em>
-              </div>
-              <div class="svc__img"><img src="/img/s6.jpg" alt="" loading="lazy" /></div>
-            </div>
-          </li>
-        </ol>
-      </section>
-
-      <!-- BEFORE / AFTER -->
-      <section class="work" id="work">
-        <div class="work__head">
-          <h2 class="display" data-split-lines>Same stone.<br /><em>Four hours apart.</em></h2>
-          <p data-fade>Drag the line. Every job on this page is shot on the day, from the same spot, before we pack the van.</p>
-        </div>
-        <div class="compare" data-compare>
-          <img class="compare__img" src="/img/s5.jpg" alt="After cleaning" />
-          <div class="compare__before"><img class="compare__img dirty" src="/img/s5.jpg" alt="Before cleaning" /></div>
-          <span class="tag tag--l mono">Before</span><span class="tag tag--r mono">After</span>
-          <div class="compare__handle" data-handle role="slider" aria-label="Before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
-            <span class="mono">‹ Drag ›</span>
-          </div>
-        </div>
-        <dl class="specs" data-fade>
-          <div><dt class="mono">Surface</dt><dd>Porcelain terrace, 64 m²</dd></div>
-          <div><dt class="mono">Time on site</dt><dd>4 hrs 20 min</dd></div>
-          <div><dt class="mono">Method</dt><dd>Rotary clean, low pressure</dd></div>
-          <div><dt class="mono">Finish</dt><dd>Sealed, matt</dd></div>
-        </dl>
-      </section>
-
-      <!-- PROCESS -->
-      <section class="process" id="process" data-process>
-        <h2 class="display" data-split-lines>Four steps,<br /><em>no shortcuts.</em></h2>
-        <div class="process__stage">
-          <svg class="process__svg" viewBox="0 0 1000 1500" preserveAspectRatio="xMidYMin meet" aria-hidden="true">
-            <path class="track" d="M120 80 C 420 60, 560 160, 520 300 C 480 430, 330 400, 350 300 C 370 210, 560 230, 600 330 C 650 450, 760 470, 800 560 C 850 680, 450 640, 260 760 C 70 880, 240 960, 440 1010 C 640 1060, 820 1120, 760 1240 C 700 1350, 420 1340, 300 1420" />
-            <path class="ink" data-ink d="M120 80 C 420 60, 560 160, 520 300 C 480 430, 330 400, 350 300 C 370 210, 560 230, 600 330 C 650 450, 760 470, 800 560 C 850 680, 450 640, 260 760 C 70 880, 240 960, 440 1010 C 640 1060, 820 1120, 760 1240 C 700 1350, 420 1340, 300 1420" />
-            <g data-sparks></g>
-            <circle class="drop" data-drop r="15" />
-          </svg>
-          <ol class="steps">
-            <li data-step style="--y:9%; --x:3%"><span class="num mono">01</span><em class="chip">Free, about 30 minutes</em><h3>The <i>survey</i></h3><p>We walk the job with you, identify the stone and check anything nearby that water could hurt. Written quote within 48 hours.</p></li>
-            <li data-step style="--y:37%; --x:50%"><span class="num mono">02</span><em class="chip">Usually done in a day</em><h3>The <i>test patch</i></h3><p>A small hidden corner first, at low pressure. We see how the surface reacts and get your sign-off before going any further.</p></li>
-            <li data-step style="--y:61%; --x:2%"><span class="num mono">03</span><em class="chip">Same day</em><h3>The <i>clean</i></h3><p>Rotary cleaner for flat stone, soft wash for render and roofs. Pressure set to the material, never to what the machine can do.</p></li>
-            <li data-step style="--y:84%; --x:48%"><span class="num mono">04</span><em class="chip">12-month check-in</em><h3>The <i>seal</i></h3><p>Joints re-sanded, sealed if the surface needs it, and we come back after a year to check it is holding up.</p><a class="btn" href="#contact">Book a survey →</a></li>
+          <ol class="svc" data-svc>
+            <li data-img="https://images.unsplash.com/photo-1605146768851-eda79da39897?auto=format&fit=crop&w=900&q=80">
+              <button aria-expanded="false"><span class="svc__name">Driveways</span><svg><use href="#i-ur" /></svg></button>
+              <div class="svc__chips"><span class="chip chip--onorange">Block paving</span><span class="chip chip--onorange">Tarmac</span><span class="chip chip--onorange">Resin</span></div>
+            </li>
+            <li class="is-on" data-img="/img/s5.jpg">
+              <button aria-expanded="true"><span class="svc__name">Patios and stone</span><svg><use href="#i-ur" /></svg></button>
+              <div class="svc__chips"><span class="chip chip--onorange">Sandstone</span><span class="chip chip--onorange">Limestone</span><span class="chip chip--onorange">Porcelain</span></div>
+            </li>
+            <li data-img="/img/s4.jpg">
+              <button aria-expanded="false"><span class="svc__name">Render and walls</span><svg><use href="#i-ur" /></svg></button>
+              <div class="svc__chips"><span class="chip chip--onorange">K Rend</span><span class="chip chip--onorange">Monocouche</span><span class="chip chip--onorange">Brick</span></div>
+            </li>
+            <li data-img="https://images.unsplash.com/photo-1786295866809-cdc32da99301?auto=format&fit=crop&w=900&q=80">
+              <button aria-expanded="false"><span class="svc__name">Roofs and gutters</span><svg><use href="#i-ur" /></svg></button>
+              <div class="svc__chips"><span class="chip chip--onorange">Tile</span><span class="chip chip--onorange">Slate</span><span class="chip chip--onorange">Moss removal</span></div>
+            </li>
+            <li data-img="/img/s2.jpg">
+              <button aria-expanded="false"><span class="svc__name">Decking and fences</span><svg><use href="#i-ur" /></svg></button>
+              <div class="svc__chips"><span class="chip chip--onorange">Hardwood</span><span class="chip chip--onorange">Composite</span><span class="chip chip--onorange">Softwood</span></div>
+            </li>
           </ol>
-        </div>
-      </section>
+          <figure class="svc__float" data-svc-float aria-hidden="true"><img src="/img/s5.jpg" alt="" data-svc-img /></figure>
+        </section>
 
-      <!-- FAQ -->
-      <section class="faq" id="faq">
-        <div class="faq__side">
-          <h2 class="display" data-split-lines>Before<br /><em>you book.</em></h2>
-          <p data-fade>The six things people ask us before a first job. If yours is not here, send us a photo and ask.</p>
-          <a class="btn btn--lg" href="#contact" data-magnet>Send us a photo →</a>
-        </div>
-        <ul class="faq__list" data-faq>
-          <li><button aria-expanded="false"><small class="mono">(01)</small>Will pressure washing damage my patio?<i></i></button><div><p>Not the way we do it. We identify the stone, run a test patch at low pressure and only go as high as the surface allows. Soft stone and render get a soft wash, never a blast.</p></div></li>
-          <li><button aria-expanded="false"><small class="mono">(02)</small>Do you need my water and electricity?<i></i></button><div><p>Usually not. The van carries its own water and a petrol machine, so all we need is access. On longer jobs we might ask to top up from an outside tap.</p></div></li>
-          <li><button aria-expanded="false"><small class="mono">(03)</small>How long will it stay clean?<i></i></button><div><p>Most patios and drives stay clean for two to three years. A biocide treatment slows regrowth, and sealing porous stone buys more time again.</p></div></li>
-          <li><button aria-expanded="false"><small class="mono">(04)</small>What happens to the run-off and my plants?<i></i></button><div><p>We cover beds and lawn edges, rinse plants before and after, and keep dirty water away from drains wherever the council asks us to.</p></div></li>
-          <li><button aria-expanded="false"><small class="mono">(05)</small>Do I need to be home?<i></i></button><div><p>Only for the survey and to sign off the test patch. After that we just need side access and somewhere to park the van.</p></div></li>
-          <li><button aria-expanded="false"><small class="mono">(06)</small>Are you insured?<i></i></button><div><p>Yes. Fully insured for public liability, and the certificate comes with every written quote.</p></div></li>
-        </ul>
-      </section>
+        <!-- REVIEWS -->
+        <section class="reviews" aria-labelledby="reviews-h">
+          <div class="reviews__head">
+            <h2 class="h2" id="reviews-h" data-heading>What <i class="hpill" style="--img:url(/img/s3.jpg)"></i> neighbours are<br class="br-d" /> honestly saying right now</h2>
+            <div class="tags tags--col">
+              <span class="chip"><svg><use href="#i-star" /></svg>Reviews</span>
+              <span class="chip">Rated 4.9 on Google</span>
+            </div>
+          </div>
+          <div class="reviews__row">
+            <article class="quote card" data-quotes>
+              <p class="quote__num"><span data-q-num>1</span>/4</p>
+              <div class="quote__body" data-q-body>
+                <blockquote>“Our sandstone patio had gone black. Two days later it looks newer than the day it was laid, and they rinsed every plant before they left.”</blockquote>
+                <p class="stars" aria-label="5 out of 5"><svg><use href="#i-star" /></svg><svg><use href="#i-star" /></svg><svg><use href="#i-star" /></svg><svg><use href="#i-star" /></svg><svg><use href="#i-star" /></svg><b>5.0</b></p>
+              </div>
+              <div class="quote__foot">
+                <div data-q-who><b>Marguerite Okafor</b><small>Sandstone patio, Roundhay</small></div>
+                <button class="round round--orange" data-q-next aria-label="Next review"><svg><use href="#i-r" /></svg></button>
+              </div>
+            </article>
+            <figure class="offer window" data-window>
+              <img src="https://images.unsplash.com/photo-1758530273451-b9d3f3e315dc?auto=format&fit=crop&w=1400&q=80" alt="A cleaner setting up a pressure washer on a garden lawn" loading="lazy" />
+              <div class="offer__tl"><span class="chip chip--white"><svg><use href="#i-shield" /></svg>Fully insured</span><span class="chip chip--white">Same-day clean</span></div>
+              <span class="offer__tr">Apr to Oct</span>
+              <figcaption>
+                <b class="offer__title">Driveway refresh</b>
+                <span class="offer__meta">Block paving, tarmac or resin, joints re-sanded</span>
+                <span class="chip chip--white">from £189<small>per drive</small></span>
+              </figcaption>
+              <a class="round round--white round--lg offer__go" href="#contact" aria-label="Book a driveway refresh"><svg><use href="#i-ur" /></svg></a>
+            </figure>
+          </div>
+        </section>
 
-      <!-- CONTACT -->
-      <section class="contact" id="contact">
-        <div class="marquee" aria-hidden="true"><div data-marquee><span class="mono">Tidemark · Pressure set to the stone · Tidemark · Pressure set to the stone · </span><span class="mono">Tidemark · Pressure set to the stone · Tidemark · Pressure set to the stone · </span></div></div>
-        <h2 class="display display--xl" data-split-lines>Got a surface<br />that's seen<br /><em>better days?</em></h2>
-        <div class="contact__grid">
-          <a class="contact__mail serif" href="mailto:hello@tidemark.example" data-magnet>hello@tidemark.example</a>
-          <p><small class="mono">Hours</small>Mon to Sat, 8am to 6pm</p>
-          <a class="text-link" href="#top">Back to top ↑</a>
+        <!-- FAQ -->
+        <section class="faq card" id="faq" aria-labelledby="faq-h">
+          <div class="faq__side">
+            <p class="eyebrow">Questions</p>
+            <h2 class="h2" id="faq-h" data-heading>Before you book.</h2>
+            <p class="small">The six things people ask us before a first job. If yours is not here, send us a photo and ask.</p>
+            <a class="btn btn--orange" href="mailto:hello@tidemark.example"><span class="roll"><span>Send us a photo</span><span aria-hidden="true">Send us a photo</span></span><span class="btn__ico"><svg><use href="#i-ur" /></svg></span></a>
+          </div>
+          <ul class="acc acc--faq" data-acc>
+            <li><button aria-expanded="false">Will pressure washing damage my patio?<i></i></button><div><p>Not the way we do it. We identify the stone, run a test patch at low pressure and only go as high as the surface allows. Soft stone and render get a soft wash, never a blast.</p></div></li>
+            <li><button aria-expanded="false">Do you need my water and electricity?<i></i></button><div><p>Usually not. The van carries its own water and a petrol machine, so all we need is access. On longer jobs we might ask to top up from an outside tap.</p></div></li>
+            <li><button aria-expanded="false">How long will it stay clean?<i></i></button><div><p>Most patios and drives stay clean for two to three years. A biocide treatment slows regrowth, and sealing porous stone buys more time again.</p></div></li>
+            <li><button aria-expanded="false">What happens to the run-off and my plants?<i></i></button><div><p>We cover beds and lawn edges, rinse plants before and after, and keep dirty water away from drains wherever the council asks us to.</p></div></li>
+            <li><button aria-expanded="false">Do I need to be home?<i></i></button><div><p>Only for the survey and to sign off the test patch. After that we just need side access and somewhere to park the van.</p></div></li>
+            <li><button aria-expanded="false">Are you insured?<i></i></button><div><p>Yes. Fully insured for public liability, and the certificate comes with every written quote.</p></div></li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- CONTACT / FOOTER -->
+      <footer class="foot card" id="contact">
+        <div class="foot__top">
+          <figure class="foot__photo">
+            <img src="/img/s3.jpg" alt="A clean pool terrace in the sun" loading="lazy" />
+            <span class="chip chip--white">Recent job</span>
+            <b>See more<br />results</b>
+            <a class="round round--white" href="#work" aria-label="See results"><svg><use href="#i-ur" /></svg></a>
+          </figure>
+          <div class="foot__main">
+            <h2 class="h2" data-heading>Send us a photo of the surface. We'll tell you what it needs.</h2>
+            <div class="tags">
+              <span class="chip chip--grey"><svg><use href="#i-clock" /></svg>Reply within a day</span>
+              <span class="chip chip--grey"><svg><use href="#i-shield" /></svg>Insured</span>
+              <span class="chip chip--grey"><svg><use href="#i-star" /></svg>4.9 rated</span>
+            </div>
+          </div>
+          <nav class="foot__links" aria-label="Footer">
+            <div><a href="#services">Services</a><a href="#process">Process</a><a href="#work">Results</a><a href="#faq">Questions</a></div>
+            <div><a href="#contact">Instagram <svg><use href="#i-ur" /></svg></a><a href="#contact">Facebook <svg><use href="#i-ur" /></svg></a><a href="#contact">Nextdoor <svg><use href="#i-ur" /></svg></a></div>
+          </nav>
+          <a class="foot__stamp" href="mailto:hello@tidemark.example" aria-label="Email Tidemark" data-foot-stamp><svg><use href="#i-drop" /></svg></a>
         </div>
-        <div class="giant serif" data-giant aria-hidden="true">TIDEMARK</div>
-      </section>
+        <div class="foot__meta">
+          <p>Leeds, West Yorkshire<br />Harrogate and Wetherby</p>
+          <a class="foot__mail" href="mailto:hello@tidemark.example">hello@tidemark.example</a>
+          <p>Mon to Sat, 8am to 6pm</p>
+        </div>
+        <div class="foot__rule"><span>Privacy</span><span>Est. 2014</span><span>Terms</span></div>
+        <div class="foot__giant" aria-hidden="true"><span data-giant>Tidemark</span></div>
+        <div class="foot__bottom">
+          <span class="chip chip--grey"><svg><use href="#i-shield" /></svg>Public liability insured</span>
+          <span class="credit">Extra photography from <a href="https://unsplash.com" rel="noopener">Unsplash</a></span>
+          <span>© 2026 Tidemark</span>
+        </div>
+      </footer>
     </main>
-
-    <footer class="foot mono">
-      <span>© 2026 Tidemark</span>
-      <span>Fully insured</span>
-      <span>Demo site · Design by your agency name</span>
-    </footer>
 
     <script type="module" src="/src/main.js"></script>
   </body>

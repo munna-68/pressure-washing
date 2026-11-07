@@ -6,7 +6,11 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": [
         "run",
-        "dev"
+        "dev",
+        "--",
+        "--port",
+        "3000",
+        "--strictPort"
       ],
       "port": 3000
     }
